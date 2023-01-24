@@ -42,11 +42,9 @@ class SearchYouTubeVideoUseCase(private val youTubeRepository: YouTubeRepository
         }
 
     private fun getSearchResponseList(response: String): List<YouTubeVideoData> {
-
         val youtubeDataList = arrayListOf<YouTubeVideoData>()
         val videoLinkPattern: Pattern = Pattern.compile("[^a-zA-Z]watch\\?v=([a-zA-Z0-9]){11}")
-
-        var m: Matcher = videoLinkPattern.matcher(response)
+        val m: Matcher = videoLinkPattern.matcher(response)
         while (m.find()) {
             youtubeDataList.add(
                 YouTubeVideoData(

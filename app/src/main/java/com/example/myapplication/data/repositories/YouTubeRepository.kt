@@ -7,7 +7,6 @@ import com.example.myapplication.data.repositories.base.BaseRepository
 class YouTubeRepository constructor(private val youTubeService: YouTubeService) : BaseRepository() {
 
     suspend fun query(query: String): String {
-        Log.e("qwe", ":query = " + query)
         return getResult {
             youTubeService.search(query)
         }.data ?: ""
