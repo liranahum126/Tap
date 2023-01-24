@@ -24,7 +24,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class YouTubeSearchFragment : BaseFragment() {
 
     private val viewModel by viewModel<YouTubeSearchViewModel>()
-//    private val mainViewModel by sharedViewModel<MainViewModel>()
 
     private lateinit var searchBox: AppCompatEditText
     private lateinit var resultRecyclerView: RecyclerView
@@ -78,9 +77,7 @@ class YouTubeSearchFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_sample, container, false)
-
         searchBox = view.findViewById(R.id.youtube_search_box)
         resultRecyclerView = view.findViewById(R.id.results_recycler_view)
         return view
