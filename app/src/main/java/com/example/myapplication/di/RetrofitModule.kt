@@ -1,5 +1,6 @@
 package com.example.myapplication.di
 
+import com.example.myapplication.constants.Links
 import com.example.myapplication.data.network.retrofit.YouTubeService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -31,7 +32,7 @@ fun provideYouTubeService(
     Retrofit.Builder()
         .addConverterFactory(ScalarsConverterFactory.create())
         .addConverterFactory(GsonConverterFactory.create(gson))
-        .baseUrl("https://www.youtube.com/")
+        .baseUrl(Links.YOUTUBE_LINK)
         .client(okHttpClient)
         .build()
         .create(YouTubeService::class.java)

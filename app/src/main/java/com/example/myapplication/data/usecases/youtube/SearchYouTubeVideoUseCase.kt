@@ -1,6 +1,7 @@
 package com.example.myapplication.data.usecases.youtube
 
 import android.util.Log
+import com.example.myapplication.constants.Links
 import com.example.myapplication.data.repositories.YouTubeRepository
 import com.example.myapplication.data.usecases.youtube.models.YouTubeVideoData
 import kotlinx.coroutines.Dispatchers
@@ -47,11 +48,10 @@ class SearchYouTubeVideoUseCase(private val youTubeRepository: YouTubeRepository
 
         var m: Matcher = videoLinkPattern.matcher(response)
         while (m.find()) {
-            Log.e("resposne", "m.group() = " + m.group())
             youtubeDataList.add(
                 YouTubeVideoData(
                     thumbnailUrl = "",
-                    videoUrl = "https://www.youtube.com/" + m.group()
+                    videoUrl = Links.YOUTUBE_LINK + m.group()
                 )
             )
         }
