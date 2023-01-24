@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.data.usecases.youtube.models.YouTubeVideoData
@@ -13,10 +14,15 @@ class YoutubeListAdapter(
     private val clickListener: ItemClickListener
 ) : RecyclerView.Adapter<YoutubeListAdapter.YouTubeItemViewHolder>() {
 
-    fun setData(youtubeDataList: List<YouTubeVideoData>) {
-        this.youtubeDataList = youtubeDataList
-        // TODO:
-        notifyDataSetChanged()
+    fun setData(list: List<YouTubeVideoData>) {
+        val oldArray = ArrayList(youtubeDataList)
+        val newArray = ArrayList(list)
+
+        val diffResult = DiffUtil.calculateDiff(MyDiffUtilCallback(newArray, oldArray))
+        oldArray.clear()
+        oldArray.addAll(newArray)
+        youtubeDataList = oldArray
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): YouTubeItemViewHolder {
