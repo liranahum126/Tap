@@ -56,17 +56,6 @@ class SearchYouTubeVideoUseCase(private val youTubeRepository: YouTubeRepository
         return youtubeDataList
     }
 
-/*    private fun getListFromRegex(pattern: String, string: String): List<String> {
-        val responseList = arrayListOf<String>()
-        val pattern: Pattern = Pattern.compile(pattern)
-        val m: Matcher = pattern.matcher(string)
-        while (m.find()) {
-            responseList.add(m.group())
-        }
-        return responseList
-    }*/
-
-
     suspend fun search(search: String) {
         withContext(Dispatchers.IO) {
             if (search == searchedWord) return@withContext
